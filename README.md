@@ -1,16 +1,16 @@
 # How-to-select-the-entire-stacking-series-segment-in-Blazor-chart 
 
-This KB article explains how to select the entire stacking series segment in the [Blazor chart](https://www.syncfusion.com/blazor-components/blazor-charts).
+This KB article explains how to select the entire stacking series segment in the [Blazor Chart Component](https://www.syncfusion.com/blazor-components/blazor-charts).
 
-**Selecting entire stacking series using Cluster selection mode**
+**Selecting entire stacking series in Blazor chart**
 
 It has been achieved by setting the [SelectionMode](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.SfChart.html#Syncfusion_Blazor_Charts_SfChart_SelectionMode) to **Cluster.** You can select entire stacking series segment in blazor chart by using this **Cluster** selection mode.
 
-You can style the selection series by using [SelectionStyle](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartSeries.html#Syncfusion_Blazor_Charts_ChartSeries_SelectionStyle) property in [ChartSeries](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartSeries.html#Syncfusion_Blazor_Charts_ChartSeries__ctor).
+You can style the selection series by using the [SelectionStyle](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartSeries.html#Syncfusion_Blazor_Charts_ChartSeries_SelectionStyle) property in [ChartSeries](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartSeries.html#Syncfusion_Blazor_Charts_ChartSeries__ctor), which accepts a CSS class for customization. 
 
 The following code example illustrates this.
 
-**C#**
+**Index.razor**
 
 ```cshtml
 
@@ -52,23 +52,19 @@ The following code example illustrates this.
         new ChartData { X= "IND", YValue= 26, YValue1=16 },
         new ChartData { X= "DEN", YValue= 26, YValue1=12 },
         new ChartData { X= "MEX", YValue= 34, YValue1=32},
-    };
-    
+    };    
 }
 
 ```
 
-The following screenshot illustrate the output of the above code snippet.
+The following screenshot illustrates the output of the above code snippet.
 
 **Output:**
 
-**Before selection:**
 
-![](/before-selection.png)
-
-**After Selection:**
-
-![](/after-selection.png)
+| **Before Selection**         | **After Selection**         |
+|--------------------------|-------------------------|
+| ![Before Selection](before-selection.png) | ![After Selection](after-selection.png) | 
 
 **Conclusion**
 
@@ -79,4 +75,3 @@ You can refer to our [Blazor Chart feature tour](https://www.syncfusion.com/blaz
 For current customers, you can check out our components from the [License and Downloads](https://www.syncfusion.com/sales/teamlicense) page. If you are new to Syncfusion, you can try our 30-day [free trial](https://www.syncfusion.com/downloads/blazor) to check out our other controls.
 
 If you have any queries or require clarifications, please let us know in the comments section below. You can also contact us through our [support forums](https://www.syncfusion.com/forums), [support portal](https://support.syncfusion.com/create), or [feedback portal](https://www.syncfusion.com/feedback/blazor-components?control=charts). We are always happy to assist you!
-
