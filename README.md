@@ -1,77 +1,71 @@
-# How-to-select-the-entire-stacking-series-segment-in-Blazor-chart 
+# How to Select the Entire Stacking Series Segment in Blazor Chart
 
-This KB article explains how to select the entire stacking series segment in the [Blazor Chart Component](https://www.syncfusion.com/blazor-components/blazor-charts).
+## Overview
 
-**Selecting entire stacking series in Blazor chart**
+This sample demonstrates how to select an entire stacked column segment in Syncfusion [Blazor Charts](https://www.syncfusion.com/blazor-components/blazor-charts) by using cluster-based selection. When a user selects a stacked segment, all corresponding stacked series points within the same category are highlighted together, making it easier to compare grouped values across the stacking collection.
 
-It has been achieved by setting the [SelectionMode](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.SfChart.html#Syncfusion_Blazor_Charts_SfChart_SelectionMode) to **Cluster.** You can select entire stacking series segment in blazor chart by using this **Cluster** selection mode.
+The implementation uses the chart selection feature with `SelectionMode="SelectionMode.Cluster"` and custom selection styling through the `SelectionStyle` property. This approach improves data visualization and user interaction scenarios where category-level selection is preferred over individual point selection.
 
-You can style the selection series by using the [SelectionStyle](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartSeries.html#Syncfusion_Blazor_Charts_ChartSeries_SelectionStyle) property in [ChartSeries](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.Charts.ChartSeries.html#Syncfusion_Blazor_Charts_ChartSeries__ctor), which accepts a CSS class for customization. 
+## Key Features
 
-The following code example illustrates this.
+- Uses the `SfChart` component to render the chart.
+- Configures `SelectionMode="SelectionMode.Cluster"` to select the entire stacked segment for a category.
+- Uses `ChartPrimaryXAxis` with `ValueType="Syncfusion.Blazor.Charts.ValueType.Category"` for category-based data representation.
+- Renders stacked series using `ChartSeries` components with `Type="ChartSeriesType.StackingColumn"`.
+- Applies custom selection appearance using the `SelectionStyle` property.
+- Binds data through the `DataSource` property.
+- Maps category and value fields using `XName` and `YName`.
+- Uses a strongly typed `ChartData` model containing:
+  - `X`
+  - `YValue`
+  - `YValue1`
+- Demonstrates selection behavior across multiple stacking column series using a shared data source.
 
-**Index.razor**
+## Prerequisites
 
-```cshtml
+- [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/)
+- [.NET SDK](https://dotnet.microsoft.com/en-us/download/dotnet) compatible with the project's target framework
 
-@using Syncfusion.Blazor.Charts
+## How to Run the Project
 
-<SfChart SelectionMode="SelectionMode.Cluster">
-    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category"></ChartPrimaryXAxis>
+**Visual Studio 2022**
+
+1. Clone or download this repository.
+2. Open the project file: 
     
-    <ChartSeriesCollection>
-        <ChartSeries DataSource="@MedalDetails" XName="X" YName="YValue" Type="ChartSeriesType.StackingColumn" SelectionStyle="chartSelection">
-        </ChartSeries>
-        <ChartSeries DataSource="@MedalDetails" XName="X" YName="YValue1" Type="ChartSeriesType.StackingColumn" SelectionStyle="chartSelection">
-        </ChartSeries>
-    </ChartSeriesCollection>
-</SfChart>
+    `SelectingStackedSeries.csproj`
 
-<style>
-    .chartSelection {
-        fill: red
-    }     
-</style>
+3. Restore NuGet packages.
+4. Build the project.
+5. Run the application using **Ctrl+F5**.
+6. Select any stacked column segment to observe cluster-based selection behavior.
 
-@code {
+**Visual Studio Code**
 
-    public class ChartData
-    {
-        public string X { get; set; }
-        public double YValue { get; set; }
-        public double YValue1 { get; set; }
-    }
+1. Clone or download this repository.
+2. Open the repository folder in Visual Studio Code.
+3. Open the integrated terminal.
+4. Navigate to the project directory:
 
-    public List<ChartData> MedalDetails = new List<ChartData>
-    {
-        new ChartData { X= "USA", YValue= 46, YValue1=56 },
-        new ChartData { X= "GBR", YValue= 27, YValue1=17 },
-        new ChartData { X= "CHN", YValue= 26, YValue1=36 },
-        new ChartData { X= "UK", YValue= 56,  YValue1=16 },
-        new ChartData { X= "AUS", YValue= 12, YValue1=46 },
-        new ChartData { X= "IND", YValue= 26, YValue1=16 },
-        new ChartData { X= "DEN", YValue= 26, YValue1=12 },
-        new ChartData { X= "MEX", YValue= 34, YValue1=32},
-    };    
-}
-
+```bash
+cd SelectingStackedSeries
+dotnet restore
+dotnet run
 ```
 
-The following screenshot illustrates the output of the above code snippet.
+5. Open the application URL displayed in the terminal output.
+6. Interact with the chart and select a stacked segment to view the entire category segment selection.
 
-**Output:**
+## Project Structure
 
+`Pages/Index.razor` - Contains the `SfChart` implementation, stacked column series configuration, selection settings, chart data model, and sample data source.
 
-| **Before Selection**         | **After Selection**         |
-|--------------------------|-------------------------|
-| ![Before Selection](before-selection.png) | ![After Selection](after-selection.png) | 
+## Support and Feedback
 
-**Conclusion**
+- For general product questions, visit the [Syncfusion Community Forum](https://www.syncfusion.com/forums) or [Syncfusion Support](https://www.syncfusion.com/support).
+- To report an issue specific to this sample, open a GitHub issue in this repository.
+- Refer to the official chart selection documentation: https://help.syncfusion.com/chart-sdk/blazor/charts/selection
 
-I hope you enjoyed learning how to select the entire stacking series segment in Blazor Chart Component.
+## License
 
-You can refer to our [Blazor Chart feature tour](https://www.syncfusion.com/blazor-components/blazor-charts) page to know about its other groundbreaking feature representations and [documentation](https://blazor.syncfusion.com/documentation/chart/getting-started), and how to quickly get started for configuration specifications. You can also explore our [Blazor Chart example](https://blazor.syncfusion.com/demos/chart/line?theme=bootstrap5) to understand how to create and manipulate data.
-
-For current customers, you can check out our components from the [License and Downloads](https://www.syncfusion.com/sales/teamlicense) page. If you are new to Syncfusion, you can try our 30-day [free trial](https://www.syncfusion.com/downloads/blazor) to check out our other controls.
-
-If you have any queries or require clarifications, please let us know in the comments section below. You can also contact us through our [support forums](https://www.syncfusion.com/forums), [support portal](https://support.syncfusion.com/create), or [feedback portal](https://www.syncfusion.com/feedback/blazor-components?control=charts). We are always happy to assist you!
+This is a Syncfusion sample project provided to demonstrate product usage. Review the [Syncfusion license terms](https://www.syncfusion.com/sales/pricing?category=ui-components) before using Syncfusion components in your own applications.
